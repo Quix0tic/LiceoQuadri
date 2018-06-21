@@ -35,7 +35,7 @@
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBaseline_toBaselineOf="@id/title"
+            app:layout_constraintBaseline_toBaselineOf="@+id/title"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="45h" />
 

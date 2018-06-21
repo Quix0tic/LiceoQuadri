@@ -50,12 +50,14 @@ dependencies {
     implementation "com.google.android.material:material:$v100_alpha3"
     implementation "androidx.cardview:cardview:$v100_alpha3"
     implementation "androidx.legacy:legacy-support-v4:$v100_alpha3"
+    implementation "androidx.appcompat:appcompat:$v100_alpha3"
 
     //implementation 'com.google.android.material:material:1.0.0-alpha3'
 
     // ROOM + LifeCycle
     def arch_version = "2.0.0-alpha1"
     implementation "androidx.room:room-runtime:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
     kapt "androidx.room:room-compiler:$arch_version"
     implementation "androidx.room:room-rxjava2:$arch_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
@@ -78,4 +80,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
 }
