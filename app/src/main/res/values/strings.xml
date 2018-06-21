@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Liceo Quadri</string>
+    <string name="notizie">Notizie</string>
+    <string name="orario">Orario</string>
+    <string name="impostazioni">Impostazioni</string>
+    <string name="informazioni">Informazioni</string>
+    <string name="calendario_scolastico">Calendario scolastico</string>
+    <string name="ASL">ASL</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="portale_masterstage">Portale Masterstage</string>
+    <string name="login">Login</string>
+    <string name="open">Apri</string>
+    <string name="close">Chiudi</string>
+    <string name="tutors">Tutors</string>
+    <string name="link_utili">Link utili</string>
+    <string name="calendario">Calendario</string>
+    <string name="annuario">Annuario</string>
+    <string name="youtube">YouTube</string>
+    <string name="progetti">Progetti</string>
+    <string name="certificazioni">Certificazioni</string>
+    <string name="classi">Classi</string>
+    <string name="info">Info</string>
+    <string name="altro">Altro</string>
+    <string name="voti">Voti</string>
+    <string name="offrimi_un_caffe">Offrimi un caffè</string>
+    <string name="calendario_impegni">Calendario impegni</string>
+    <string name="classe">Classe</string>
+</resources>

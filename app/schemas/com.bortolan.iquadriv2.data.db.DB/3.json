@@ -1,0 +1,226 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "6289e8b5c7d1ecf897f18f9b4c581b2f",
+    "entities": [
+      {
+        "tableName": "Stage",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `progetto` TEXT NOT NULL, `descrizione` TEXT NOT NULL, `mansioni` TEXT NOT NULL, `luogoSvolgimento` TEXT NOT NULL, `dataInizio` INTEGER NOT NULL, `dataFine` INTEGER NOT NULL, `tutorScolastico` TEXT NOT NULL, `tutorAziendale` TEXT NOT NULL, `valutazioneStudente` TEXT NOT NULL, `orePreviste` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "progetto",
+            "columnName": "progetto",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descrizione",
+            "columnName": "descrizione",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mansioni",
+            "columnName": "mansioni",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "luogoSvolgimento",
+            "columnName": "luogoSvolgimento",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataInizio",
+            "columnName": "dataInizio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataFine",
+            "columnName": "dataFine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tutorScolastico",
+            "columnName": "tutorScolastico",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tutorAziendale",
+            "columnName": "tutorAziendale",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "valutazioneStudente",
+            "columnName": "valutazioneStudente",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "orePreviste",
+            "columnName": "orePreviste",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Presenze",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `data` INTEGER NOT NULL, `inizio` INTEGER NOT NULL, `fine` INTEGER NOT NULL, `attivita` TEXT NOT NULL, `convalida` INTEGER NOT NULL, `stageId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "data",
+            "columnName": "data",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inizio",
+            "columnName": "inizio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fine",
+            "columnName": "fine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attivita",
+            "columnName": "attivita",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "convalida",
+            "columnName": "convalida",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stageId",
+            "columnName": "stageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Studenti",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`classe` TEXT NOT NULL, `grado` INTEGER NOT NULL, `sezione` TEXT NOT NULL, `indirizzo` TEXT NOT NULL, `cognome` TEXT NOT NULL, `nome` TEXT NOT NULL, PRIMARY KEY(`cognome`, `nome`))",
+        "fields": [
+          {
+            "fieldPath": "classe",
+            "columnName": "classe",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grado",
+            "columnName": "grado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sezione",
+            "columnName": "sezione",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "indirizzo",
+            "columnName": "indirizzo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cognome",
+            "columnName": "cognome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "cognome",
+            "nome"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Progetti",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`url` TEXT NOT NULL, `nome` TEXT NOT NULL, PRIMARY KEY(`url`))",
+        "fields": [
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "url"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6289e8b5c7d1ecf897f18f9b4c581b2f\")"
+    ]
+  }
+}

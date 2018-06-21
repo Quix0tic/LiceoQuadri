@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_notizie"
+            android:icon="@drawable/ic_new_releases_black_24dp"
+            android:title="@string/notizie" />
+        <item
+            android:id="@+id/nav_asl"
+            android:icon="@drawable/ic_import_export_black_24dp"
+            android:title="@string/ASL" />
+
+        <item
+            android:id="@+id/nav_classi"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/classi" />
+
+        <item
+            android:id="@+id/nav_voti"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="@string/voti" />
+
+
+        <item
+            android:id="@+id/nav_sub1"
+            android:title="@string/link_utili">
+            <menu>
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/nav_annuario"
+                        android:icon="@drawable/ic_image_black_24dp"
+                        android:title="@string/annuario" />
+                    <item
+                        android:id="@+id/nav_calendario"
+                        android:icon="@drawable/ic_dashboard_black_24dp"
+                        android:title="@string/calendario" />
+                    <item
+                        android:id="@+id/nav_certificazioni"
+                        android:icon="@drawable/ic_language_black_24dp"
+                        android:title="@string/certificazioni" />
+                    <item
+                        android:id="@+id/nav_youtube"
+                        android:icon="@drawable/ic_youtube"
+                        android:title="@string/youtube" />
+                    <item
+                        android:id="@+id/nav_progetti"
+                        android:icon="@drawable/ic_cube"
+                        android:title="@string/progetti" />
+                </group>
+
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_sub2"
+            android:title="@string/altro">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_info"
+                        android:icon="@drawable/ic_info_black_24dp"
+                        android:title="@string/informazioni" />
+                    <item
+                        android:id="@+id/nav_impostazioni"
+                        android:icon="@drawable/ic_settings_black_24dp"
+                        android:title="@string/impostazioni" />
+                    <item
+                        android:id="@+id/nav_donazione"
+                        android:icon="@drawable/ic_coffee"
+                        android:title="@string/offrimi_un_caffe" />
+                </group>
+            </menu>
+        </item>
+    </group>
+</menu>
