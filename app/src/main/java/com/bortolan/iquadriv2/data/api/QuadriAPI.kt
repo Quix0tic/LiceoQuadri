@@ -22,6 +22,12 @@ interface QuadriAPI {
     @GET("progetti/")
     fun getProgetti(): Observable<Response<ResponseBody>>
 
+    @GET("wp-content/archivio/orario/_ressource.js")
+    fun getIDOrari(): Observable<Response<ResponseBody>>
+
+    @GET("wp-content/archivio/orario/_grille.js")
+    fun getLinkOrari(): Observable<Response<ResponseBody>>
+
     companion object : SingletonHolder<QuadriAPI, Context>({
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BASIC

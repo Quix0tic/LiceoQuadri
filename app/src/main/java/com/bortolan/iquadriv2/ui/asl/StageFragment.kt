@@ -14,7 +14,6 @@ import com.bortolan.iquadriv2.ui.asl.viewModel.StageViewModel
 import kotlinx.android.synthetic.main.fragment_stage.*
 
 class StageFragment : Fragment() {
-    private val adapter = StageAdapter()
     private val viewModel by lazy {
         ViewModelProviders.of(activity!!)[StageViewModel::class.java]
     }
@@ -24,20 +23,24 @@ class StageFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recycler.adapter = adapter
-        activity?.title = "ASL - Stage"
-
         refresh.setOnRefreshListener(this::download)
         refresh.setColorSchemeResources(R.color.colorPrimary)
 
+
+        val adapter = StageAdapter()
+        recycler.adapter = adapter
         viewModel.init(context!!)
         viewModel.stages.observe(this, Observer {
-            adapter.setData(it.orEmpty())
-            adapter.notifyDataSetChanged()
+            adapter.submitList(it)
         })
         viewModel.isSendingRequest.observe(this, Observer {
             refresh.isRefreshing = it == true
         })
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity!!.title = "ASL - Stage"
     }
 
     private fun download() {

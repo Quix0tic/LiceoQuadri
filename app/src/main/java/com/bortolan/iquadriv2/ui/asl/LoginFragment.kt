@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.bortolan.iquadriv2.ui.MainActivity
 import com.bortolan.iquadriv2.PreferenceManager
 import com.bortolan.iquadriv2.R
 import com.bortolan.iquadriv2.data.api.MasterstageAPI
 import com.bortolan.iquadriv2.data.api.SyncHelper
+import com.bortolan.iquadriv2.ui.MainActivity
 import com.bortolan.iquadriv2.ui.asl.viewModel.LoginViewModel
 import com.bortolan.iquadriv2.ui.asl.viewModel.StageViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers

@@ -31,7 +31,7 @@ class CalendarioFragment : Fragment() {
         web_view.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                TODO()
+                //TODO()
             }
         }
         web_view.settings.javaScriptEnabled = true

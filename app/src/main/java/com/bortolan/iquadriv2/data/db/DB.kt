@@ -7,13 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.bortolan.iquadriv2.SingletonHolder
 import com.bortolan.iquadriv2.data.db.converters.DateConverter
-import com.bortolan.iquadriv2.data.pojos.Presenza
-import com.bortolan.iquadriv2.data.pojos.Progetto
-import com.bortolan.iquadriv2.data.pojos.Stage
-import com.bortolan.iquadriv2.data.pojos.Studente
+import com.bortolan.iquadriv2.data.pojos.*
 
 @TypeConverters(DateConverter::class)
-@Database(entities = [Stage::class, Presenza::class, Studente::class, Progetto::class], version = 5, exportSchema = true)
+@Database(entities = [Stage::class, Presenza::class, Studente::class, Progetto::class, Orario::class], version = 6, exportSchema = true)
 abstract class DB : RoomDatabase() {
     abstract fun masterstage(): MasterstageDao
     abstract fun quadri(): QuadriDao

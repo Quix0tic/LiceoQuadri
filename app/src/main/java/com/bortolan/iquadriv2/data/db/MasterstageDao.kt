@@ -2,9 +2,11 @@ package com.bortolan.iquadriv2.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import androidx.paging.DataSource
 import androidx.room.*
 import com.bortolan.iquadriv2.data.pojos.Presenza
 import com.bortolan.iquadriv2.data.pojos.Stage
+import com.bortolan.iquadriv2.ui.asl.adapter.StageAdapter
 
 @Dao
 abstract class MasterstageDao {
@@ -60,7 +62,9 @@ abstract class MasterstageDao {
                 stage
             }
         })
-
     }
+
+    @Query("SELECT id, luogoSvolgimento as luogo, substr(descrizione,0,200)||\"...\" as descrizione,tutorAziendale, tutorScolastico, ROUND((SELECT SUM(fine-inizio) FROM Presenze WHERE stageId=Stage.id GROUP BY stageId)/3600) as ore FROM Stage ORDER BY dataFine DESC")
+    abstract fun getStageDataHolder(): DataSource.Factory<Int, StageAdapter.StageDataHolder>
 
 }

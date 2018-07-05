@@ -1,12 +1,10 @@
 package com.bortolan.iquadriv2.data.api
 
+import android.annotation.SuppressLint
 import android.content.Context
-import androidx.fragment.app.Fragment
 import com.bortolan.iquadriv2.data.api.parser.MasterstageParser
 import com.bortolan.iquadriv2.data.api.parser.QuadriParser
 import com.bortolan.iquadriv2.data.db.DB
-import com.bortolan.iquadriv2.data.pojos.Stage
-import com.bortolan.iquadriv2.ui.asl.viewModel.LoginViewModel
 import com.bortolan.iquadriv2.ui.asl.viewModel.StageViewModel
 import com.bortolan.iquadriv2.ui.classi.viewModel.ClassiViewModel
 import io.reactivex.Observable
@@ -15,6 +13,7 @@ import io.reactivex.schedulers.Schedulers
 
 object SyncHelper {
 
+    @SuppressLint("CheckResult")
     fun syncStage(c: Context, viewModel: StageViewModel) {
         viewModel.isSendingRequest.value = true
         MasterstageParser
@@ -43,6 +42,7 @@ object SyncHelper {
                 })
     }
 
+    @SuppressLint("CheckResult")
     fun syncClassi(c: Context, viewModel: ClassiViewModel) {
         viewModel.isSendingRequest.value = true
         QuadriParser
@@ -59,5 +59,18 @@ object SyncHelper {
 
     fun syncProgetti(c: Context) {
         TODO()
+    }
+
+    fun syncOrari(c: Context) {
+        QuadriParser.getOrari(QuadriAPI.getInstance(c))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter { it.isSuccessful }
+                .subscribe({
+                    DB.getInstance(c).quadri().saveOrari(it.body()!!)
+                }, Throwable::printStackTrace, {
+
+                })
+
     }
 }

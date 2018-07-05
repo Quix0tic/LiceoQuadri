@@ -14,14 +14,13 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
-
     }
     buildTypes {
         release {
@@ -32,35 +31,72 @@ android {
             applicationIdSuffix = ".debug"
         }
     }
-
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    configurations {
+        all*.exclude module: 'support-media-compat'
+        all*.exclude module: 'support-compat'
+    }
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
     // SUPPORT
-    def v100_alpha1 = '1.0.0-alpha1'
-    def v100_alpha3 = '1.0.0-alpha3'
+    def v100_beta01 = '1.0.0-beta01'
 
-    implementation "androidx.appcompat:appcompat:$v100_alpha3"
-    implementation "androidx.recyclerview:recyclerview:$v100_alpha1"
-    implementation "androidx.annotation:annotation:$v100_alpha1"
-    implementation "com.google.android.material:material:$v100_alpha3"
-    implementation "androidx.cardview:cardview:$v100_alpha3"
-    implementation "androidx.legacy:legacy-support-v4:$v100_alpha3"
-    implementation "androidx.appcompat:appcompat:$v100_alpha3"
+    implementation "androidx.appcompat:appcompat:$v100_beta01"
+    implementation "androidx.recyclerview:recyclerview:$v100_beta01"
+    implementation "androidx.annotation:annotation:$v100_beta01"
+    implementation "com.google.android.material:material:$v100_beta01"
+    implementation "androidx.cardview:cardview:$v100_beta01"
+    implementation "androidx.legacy:legacy-support-v4:$v100_beta01"
+    implementation "androidx.appcompat:appcompat:$v100_beta01"
+    implementation "androidx.legacy:legacy-support-core-ui:$v100_beta01"
 
-    //implementation 'com.google.android.material:material:1.0.0-alpha3'
+    // Architecture Components
+    //      Lifecycle
+    def lifecycle_version = "2.0.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    //kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-    // ROOM + LifeCycle
-    def arch_version = "2.0.0-alpha1"
-    implementation "androidx.room:room-runtime:$arch_version"
-    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
-    kapt "androidx.room:room-compiler:$arch_version"
-    implementation "androidx.room:room-rxjava2:$arch_version"
-    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
+    //      Room
+    def room_version = "2.0.0-beta01"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    //      Paging
+    def paging_version = "2.0.0-beta01"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    //      Navigation
+    //------
+    // Check https://developer.android.com/topic/libraries/architecture/adding-components#Navigation
+    //------
+    //  Ultimo update 19 Giugno, 2018
+    //  Navigation classes are already in the androidx.navigation package, but currently depend on Support Library 27.1.1, and associated Arch component versions. Version of Navigation with AndroidX dependencies will be released in the future.
+    //------
+    def nav_version = "1.0.0-alpha02"
+    implementation "android.arch.navigation:navigation-fragment:$nav_version" // use -ktx for Kotlin
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
+    implementation "android.arch.navigation:navigation-ui:$nav_version" // use -ktx for Kotlin
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
+
+    //      WorkManager
+    //------
+    // Check https://developer.android.com/topic/libraries/architecture/adding-components#Navigation
+    //------
+    //  Ultimo update 19 Giugno, 2018
+    //  WorkManager classes are already in the androidx.work package, but currently depend on Support Library 27.1, and associated Arch component versions. Version of WorkManager with AndroidX dependencies will be released in the future
+    //------
+    def work_version = "1.0.0-alpha04"
+    implementation "android.arch.work:work-runtime:$work_version" // use -ktx for Kotlin
+    implementation "android.arch.work:work-runtime-ktx:$work_version" // use -ktx for Kotlin
 
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
@@ -80,5 +116,4 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
 }
