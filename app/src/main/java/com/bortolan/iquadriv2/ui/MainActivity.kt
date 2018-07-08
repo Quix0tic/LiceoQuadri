@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close)
         actionBarDrawerToggle.syncState()
         navigation.setNavigationItemSelectedListener(this)
-
         navigation.setCheckedItem(viewModel.selectedItem.value ?: R.id.nav_notizie)
         onNavigationItemSelected(navigation.checkedItem!!)
     }

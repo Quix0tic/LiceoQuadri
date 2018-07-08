@@ -27,11 +27,12 @@ class CalendarioFragment : Fragment() {
             web_view.restoreState(savedInstanceState)
         } else {
             web_view.loadUrl("https://calendar.google.com/calendar/embed?showTitle=0&showTz=0&mode=AGENDA&wkst=2&bgcolor=%23FFFFFF&src=info%40liceoquadri.it&color=%2329527A&ctz=Europe%2FRome")
+            progressBar.visibility = View.VISIBLE
         }
         web_view.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                //TODO()
+                progressBar.visibility = View.GONE
             }
         }
         web_view.settings.javaScriptEnabled = true
