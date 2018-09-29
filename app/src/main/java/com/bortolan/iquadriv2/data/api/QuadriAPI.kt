@@ -22,6 +22,9 @@ interface QuadriAPI {
     @GET("progetti/")
     fun getProgetti(): Observable<Response<ResponseBody>>
 
+    @GET("progetti/{url}")
+    fun getProgetto(url:String): Observable<Response<ResponseBody>>
+
     @GET("wp-content/archivio/orario/_ressource.js")
     fun getIDOrari(): Observable<Response<ResponseBody>>
 

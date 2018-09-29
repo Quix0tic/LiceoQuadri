@@ -57,10 +57,26 @@ object SyncHelper {
                 })
     }
 
+    @SuppressLint("CheckResult")
     fun syncProgetti(c: Context) {
-        TODO()
+        QuadriParser
+                .getProgetti(QuadriAPI.getInstance(c))
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .filter { it.isSuccessful }
+                .map { it.body() }
+                .flatMap { Observable.fromIterable(it) }
+                .map { QuadriAPI.getInstance(c).getProgetto(it.url) }
+                .flatMap { it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()) }
+                .subscribe({
+
+                },Throwable::printStackTrace,{
+
+                })
+
     }
 
+    @SuppressLint("CheckResult")
     fun syncOrari(c: Context) {
         QuadriParser.getOrari(QuadriAPI.getInstance(c))
                 .subscribeOn(Schedulers.io())

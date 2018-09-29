@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_notizie"
             android:icon="@drawable/ic_new_releases_black_24dp"
+            app:actionViewClass="android.widget.TextView"
             android:title="@string/notizie" />
         <item
             android:id="@+id/nav_asl"
@@ -20,32 +22,36 @@
             android:icon="@drawable/ic_school_black_24dp"
             android:title="@string/voti" />
 
+        <item
+            android:id="@+id/nav_calendario"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="@string/calendario" />
 
         <item
             android:id="@+id/nav_sub1"
             android:title="@string/link_utili">
             <menu>
-                <group android:checkableBehavior="single">
+                <group android:checkableBehavior="none">
 
                     <item
                         android:id="@+id/nav_annuario"
                         android:icon="@drawable/ic_image_black_24dp"
+                        app:actionViewClass="android.widget.ImageView"
                         android:title="@string/annuario" />
-                    <item
-                        android:id="@+id/nav_calendario"
-                        android:icon="@drawable/ic_dashboard_black_24dp"
-                        android:title="@string/calendario" />
                     <item
                         android:id="@+id/nav_certificazioni"
                         android:icon="@drawable/ic_language_black_24dp"
+                        app:actionViewClass="android.widget.ImageView"
                         android:title="@string/certificazioni" />
                     <item
                         android:id="@+id/nav_youtube"
                         android:icon="@drawable/ic_youtube"
+                        app:actionViewClass="android.widget.ImageView"
                         android:title="@string/youtube" />
                     <item
                         android:id="@+id/nav_progetti"
                         android:icon="@drawable/ic_cube"
+                        app:actionViewClass="android.widget.ImageView"
                         android:title="@string/progetti" />
                 </group>
 

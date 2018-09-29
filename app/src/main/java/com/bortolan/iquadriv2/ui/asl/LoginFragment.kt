@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.title = "Liceo Quadri"
+        activity?.title = "MasterStage"
 
         viewModel.init(context!!)
         viewModel.token.observe(this, Observer {

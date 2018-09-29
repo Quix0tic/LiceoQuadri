@@ -51,7 +51,7 @@ object QuadriParser {
                         val progetti = rows
                                 .map {
                                     Progetto(
-                                            it.attr("href"),
+                                            it.attr("href").split("/").last(),
                                             it.text()
                                     )
                                 }
