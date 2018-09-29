@@ -27,4 +27,8 @@
     <string name="offrimi_un_caffe">Offrimi un caffè</string>
     <string name="calendario_impegni">Calendario impegni</string>
     <string name="classe">Classe</string>
+    <string name="circolari">Circolari</string>
+    <string name="quadrinews">Quadrinews</string>
+    <string name="mostra_altro">Mostra altro</string>
+    <string name="recenti">Recenti</string>
 </resources>

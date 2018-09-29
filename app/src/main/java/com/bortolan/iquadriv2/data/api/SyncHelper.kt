@@ -7,6 +7,7 @@ import com.bortolan.iquadriv2.data.api.parser.QuadriParser
 import com.bortolan.iquadriv2.data.db.DB
 import com.bortolan.iquadriv2.ui.asl.viewModel.StageViewModel
 import com.bortolan.iquadriv2.ui.classi.viewModel.ClassiViewModel
+import com.crashlytics.android.Crashlytics
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -88,5 +89,46 @@ object SyncHelper {
 
                 })
 
+    }
+
+    @SuppressLint("CheckResult")
+    fun syncNotizie(context: Context) {
+        QuadriParser.getNotizie(QuadriAPI.getInstance(context))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .filter { it.isSuccessful }
+                .map { it.body()!! }
+                .subscribe({
+                    DB.getInstance(context).quadri().saveNotizie(it)
+                }, Throwable::printStackTrace, {
+
+                })
+    }
+
+    @SuppressLint("CheckResult")
+    fun syncCircolari(context: Context) {
+        QuadriParser.getCircolari()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    DB.getInstance(context).quadri().saveCircolari(it)
+                }, {
+                    Crashlytics.log("syncCircolari: " + it.message)
+                }, {
+
+                })
+    }
+
+    @SuppressLint("CheckResult")
+    fun syncQuadrinews(context: Context) {
+        QuadriParser.getQuadrinews(QuadriAPI.getInstance(context))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .map { it.body()!! }
+                .subscribe({
+                    DB.getInstance(context).quadri().saveQuadrinews(it)
+                }, Throwable::printStackTrace, {
+
+                })
     }
 }

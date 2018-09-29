@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -81,7 +82,7 @@ dependencies {
     //  Ultimo update 8 luglio, 2018
     //  Navigation classes are already in the androidx.navigation package, but currently depend on Support Library 27.1.1, and associated Arch component versions. Version of Navigation with AndroidX dependencies will be released in the future.
     //------
-  /*  def nav_version = "1.0.0-alpha02"
+    /*  def nav_version = "1.0.0-alpha02"
     implementation "android.arch.navigation:navigation-fragment:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui:$nav_version" // use -ktx for Kotlin
@@ -94,7 +95,7 @@ dependencies {
     //  Ultimo update 8 luglio, 2018
     //  WorkManager classes are already in the androidx.work package, but currently depend on Support Library 27.1, and associated Arch component versions. Version of WorkManager with AndroidX dependencies will be released in the future
     //------
-  /*  def work_version = "1.0.0-alpha04"
+    /*  def work_version = "1.0.0-alpha04"
     implementation "android.arch.work:work-runtime:$work_version" // use -ktx for Kotlin
     implementation "android.arch.work:work-runtime-ktx:$work_version" // use -ktx for Kotlin
 */
@@ -113,7 +114,12 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
     implementation 'com.google.code.gson:gson:2.8.5'
 
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
 }

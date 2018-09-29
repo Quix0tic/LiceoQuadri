@@ -2,14 +2,8 @@ package com.bortolan.iquadriv2.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
-import com.bortolan.iquadriv2.data.pojos.Classe
-import com.bortolan.iquadriv2.data.pojos.Orario
-import com.bortolan.iquadriv2.data.pojos.Progetto
-import com.bortolan.iquadriv2.data.pojos.Studente
+import androidx.room.*
+import com.bortolan.iquadriv2.data.pojos.*
 
 @Dao
 abstract class QuadriDao {
@@ -62,4 +56,30 @@ abstract class QuadriDao {
         insertOrari(body)
     }
 
+    @Query("DELETE FROM Notizie")
+    abstract fun removeNotizie()
+
+    @Insert
+    abstract fun insertNotizie(it: List<Notizie>)
+
+    @Transaction
+    open fun saveNotizie(it: List<Notizie>) {
+        removeNotizie()
+        insertNotizie(it)
+    }
+
+    @Query("SELECT * FROM Notizie ORDER BY id ASC")
+    abstract fun getNotizie(): LiveData<List<Notizie>>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract fun saveCircolari(it: List<Circolari>)
+
+    @Query("SELECT * FROM Circolari ORDER BY date DESC LIMIT :limit")
+    abstract fun getCircolari(limit: Int): LiveData<List<Circolari>>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract fun saveQuadrinews(it: List<Quadrinews>)
+
+    @Query("SELECT * FROM Quadrinews ORDER BY date DESC LIMIT :limit")
+    abstract fun getQuadrinews(limit: Int): LiveData<List<Quadrinews>>
 }

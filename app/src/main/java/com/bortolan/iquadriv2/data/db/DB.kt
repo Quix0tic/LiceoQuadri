@@ -10,7 +10,7 @@ import com.bortolan.iquadriv2.data.db.converters.DateConverter
 import com.bortolan.iquadriv2.data.pojos.*
 
 @TypeConverters(DateConverter::class)
-@Database(entities = [Stage::class, Presenza::class, Studente::class, Progetto::class, Orario::class], version = 6, exportSchema = true)
+@Database(entities = [Stage::class, Presenza::class, Studente::class, Progetto::class, Orario::class, Notizie::class, Circolari::class, Quadrinews::class], version = 10, exportSchema = true)
 abstract class DB : RoomDatabase() {
     abstract fun masterstage(): MasterstageDao
     abstract fun quadri(): QuadriDao

@@ -16,6 +16,9 @@ import java.util.concurrent.TimeUnit
 
 interface QuadriAPI {
 
+    @GET("http://www.liceoquadri.it/")
+    fun getHome(): Observable<Response<ResponseBody>>
+
     @GET("studenti/elenco-studenti/")
     fun getStudenti(): Observable<Response<ResponseBody>>
 
@@ -30,6 +33,9 @@ interface QuadriAPI {
 
     @GET("wp-content/archivio/orario/_grille.js")
     fun getLinkOrari(): Observable<Response<ResponseBody>>
+
+    @GET("category/qnews/")
+    fun getQuadrinews(): Observable<Response<ResponseBody>>
 
     companion object : SingletonHolder<QuadriAPI, Context>({
         val logging = HttpLoggingInterceptor()

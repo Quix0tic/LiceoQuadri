@@ -36,6 +36,7 @@ class StageFragment : Fragment() {
         viewModel.isSendingRequest.observe(this, Observer {
             refresh.isRefreshing = it == true
         })
+        download()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
