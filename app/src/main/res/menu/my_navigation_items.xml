@@ -32,17 +32,11 @@
             android:title="@string/link_utili">
             <menu>
                 <group android:checkableBehavior="none">
-
                     <item
-                        android:id="@+id/nav_annuario"
-                        android:icon="@drawable/ic_image_black_24dp"
-                        app:actionViewClass="android.widget.ImageView"
-                        android:title="@string/annuario" />
-                    <item
-                        android:id="@+id/nav_certificazioni"
+                        android:id="@+id/nav_servizi"
                         android:icon="@drawable/ic_language_black_24dp"
                         app:actionViewClass="android.widget.ImageView"
-                        android:title="@string/certificazioni" />
+                        android:title="@string/servizi" />
                     <item
                         android:id="@+id/nav_youtube"
                         android:icon="@drawable/ic_youtube"

@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Typeface.BOLD
 import android.os.Bundle
-import android.transition.Fade
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.MenuItem
@@ -26,6 +25,9 @@ import com.bortolan.iquadriv2.ui.notizie.NotizieFragment
 import com.bortolan.iquadriv2.ui.voti.VotiLogin
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.Intent
+import android.net.Uri
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val viewModel by lazy {
@@ -54,6 +56,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_calendario -> fragment = CalendarioFragment()
             R.id.nav_classi -> fragment = ClassiFragment()
+            R.id.nav_youtube -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/c/StreamingLiceoquadri"))
+                startActivity(intent)
+            }
+            R.id.nav_progetti -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.liceoquadri.gov.it/progetti/"))
+                startActivity(intent)
+            }
+            R.id.nav_servizi -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.liceoquadri.gov.it/servizi/"))
+                startActivity(intent)
+            }
         }
 
         viewModel.selectedItem.value = item.itemId
@@ -87,8 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val countUnreadNews = DB.getInstance(this).quadri().countUnreadCircolari(PreferenceManager.getLastCheckedNews(this))
         setBadge(navigation.menu.findItem(R.id.nav_notizie), countUnreadNews)
 
-        setLinkable(navigation.menu.findItem(R.id.nav_annuario), secondaryColor.data)
-        setLinkable(navigation.menu.findItem(R.id.nav_certificazioni), secondaryColor.data)
+        setLinkable(navigation.menu.findItem(R.id.nav_servizi), secondaryColor.data)
         setLinkable(navigation.menu.findItem(R.id.nav_youtube), secondaryColor.data)
         setLinkable(navigation.menu.findItem(R.id.nav_progetti), secondaryColor.data)
     }
@@ -104,7 +117,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setLinkable(item: MenuItem, color: Int){
 
         (item.actionView as ImageView).setImageResource(R.drawable.ic_insert_link_black_16dp)
-        (item.actionView as ImageView).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+        (item.actionView as ImageView).setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
     }
 
     override fun setTitle(title: CharSequence?) {
