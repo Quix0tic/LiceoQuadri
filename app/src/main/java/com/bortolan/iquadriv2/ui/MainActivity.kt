@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import com.bortolan.iquadriv2.PreferenceManager
 import com.bortolan.iquadriv2.R
+import com.bortolan.iquadriv2.data.db.DB
 import com.bortolan.iquadriv2.ui.asl.LoginFragment
 import com.bortolan.iquadriv2.ui.asl.StageFragment
 import com.bortolan.iquadriv2.ui.calendario.CalendarioFragment
@@ -74,7 +75,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val secondaryColor = TypedValue()
         theme.resolveAttribute(android.R.attr.textColorSecondary, secondaryColor, true)
 
-        setBadge(navigation.menu.findItem(R.id.nav_notizie), 3)
+        val countUnreadNews = DB.getInstance(this).quadri().countUnreadCircolari(PreferenceManager.getLastCheckedNews(this))
+        setBadge(navigation.menu.findItem(R.id.nav_notizie), countUnreadNews)
 
         setLinkable(navigation.menu.findItem(R.id.nav_annuario), secondaryColor.data)
         setLinkable(navigation.menu.findItem(R.id.nav_certificazioni), secondaryColor.data)

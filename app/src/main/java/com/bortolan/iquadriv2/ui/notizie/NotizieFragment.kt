@@ -2,6 +2,7 @@ package com.bortolan.iquadriv2.ui.notizie
 
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bortolan.iquadriv2.PreferenceManager
 import com.bortolan.iquadriv2.R
 import com.bortolan.iquadriv2.data.api.QuadriAPI
 import com.bortolan.iquadriv2.data.api.SyncHelper
 import com.bortolan.iquadriv2.data.api.parser.QuadriParser
+import com.bortolan.iquadriv2.ui.MainActivity
 import com.bortolan.iquadriv2.ui.notizie.adapter.CircolariAdapter
 import com.bortolan.iquadriv2.ui.notizie.adapter.NewsAdapter
 import com.bortolan.iquadriv2.ui.notizie.adapter.QuadrinewsAdapter
 import kotlinx.android.synthetic.main.fragment_notizie.*
+import java.util.*
 
 //TODO: "Mostra altro"
 class NotizieFragment : Fragment() {
@@ -64,7 +68,12 @@ class NotizieFragment : Fragment() {
     }
 
     fun markAsRead() {
-
+        Handler().postDelayed({
+            if (context != null) {
+                PreferenceManager.setLastCheckedNews(context!!, Date())
+                (activity as MainActivity).updateNavigationBadges()
+            }
+        }, 5000)
     }
 
     fun syncNews() {

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import com.bortolan.iquadriv2.data.pojos.*
+import java.util.*
 
 @Dao
 abstract class QuadriDao {
@@ -82,4 +83,7 @@ abstract class QuadriDao {
 
     @Query("SELECT * FROM Quadrinews ORDER BY date DESC LIMIT :limit")
     abstract fun getQuadrinews(limit: Int): LiveData<List<Quadrinews>>
+
+    @Query("SELECT COUNT(*) FROM Circolari WHERE creationDate > :lastChecked")
+    abstract fun countUnreadCircolari(lastChecked: Date): Int
 }
