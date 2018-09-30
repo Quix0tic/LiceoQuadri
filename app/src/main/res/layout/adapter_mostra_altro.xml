@@ -7,7 +7,7 @@
     android:elevation="2dp">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/circolari_more"
+        android:id="@+id/altro"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

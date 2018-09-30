@@ -10,12 +10,17 @@ import com.bortolan.iquadriv2.data.pojos.Quadrinews
 
 class NotizieViewModel : ViewModel() {
 
+    val mapCircolari = mutableMapOf<Int, LiveData<List<Circolari>>>()
+
     fun getNotizie(context: Context): LiveData<List<Notizie>> {
         return DB.getInstance(context).quadri().getNotizie()
     }
 
-    fun getCircolari(context: Context): LiveData<List<Circolari>> {
-        return DB.getInstance(context).quadri().getCircolari(3)
+    fun getCircolari(context: Context, limit: Int): LiveData<List<Circolari>> {
+        if (mapCircolari[limit] == null) {
+            mapCircolari[limit] = DB.getInstance(context).quadri().getCircolari(limit)
+        }
+        return mapCircolari[limit]!!
     }
 
     fun getQuadrinews(context: Context): LiveData<List<Quadrinews>> {

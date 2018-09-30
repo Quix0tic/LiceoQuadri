@@ -7,9 +7,12 @@ import com.bortolan.iquadriv2.R
 import com.bortolan.iquadriv2.data.pojos.Quadrinews
 import com.bortolan.iquadriv2.ui.viewHolder.MostraAltroViewHolder
 import com.bortolan.iquadriv2.ui.viewHolder.TwoLinesHolder
+import kotlinx.android.synthetic.main.adapter_mostra_altro.view.*
 
-class QuadrinewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class QuadrinewsAdapter(private val moreClick: ((RecyclerView.ViewHolder) -> Unit)?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val data = mutableListOf<Quadrinews>()
+    var isShowMore: Boolean = true
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 1) {
             MostraAltroViewHolder(parent)
@@ -18,7 +21,7 @@ class QuadrinewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount() = data.size + 1
+    override fun getItemCount() = data.size + if (isShowMore) 1 else 0
 
     override fun getItemViewType(position: Int): Int {
         return if (position == data.size) 1 else 0
@@ -28,6 +31,8 @@ class QuadrinewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (holder is TwoLinesHolder) {
             holder.title.text = data[position].title
             holder.content.text = data[position].content
+        } else {
+            holder.itemView.altro.setOnClickListener { moreClick?.invoke(holder) }
         }
     }
 

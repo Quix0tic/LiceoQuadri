@@ -78,12 +78,27 @@ abstract class QuadriDao {
     @Query("SELECT * FROM Circolari ORDER BY date DESC LIMIT :limit")
     abstract fun getCircolari(limit: Int): LiveData<List<Circolari>>
 
+    @Query("SELECT * FROM Circolari ORDER BY date DESC")
+    abstract fun getCircolariSync(): List<Circolari>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract fun saveQuadrinews(it: List<Quadrinews>)
 
     @Query("SELECT * FROM Quadrinews ORDER BY date DESC LIMIT :limit")
     abstract fun getQuadrinews(limit: Int): LiveData<List<Quadrinews>>
 
+    @Query("SELECT * FROM Quadrinews ORDER BY date DESC LIMIT :i")
+    abstract fun getQuadrinewsSync(i: Int): List<Quadrinews>
+
     @Query("SELECT COUNT(*) FROM Circolari WHERE creationDate > :lastChecked")
     abstract fun countUnreadCircolari(lastChecked: Date): Int
+
+    open fun getCircolariSync(i: Int, circolariFilter: Set<String>): List<Circolari> {
+        return getCircolariSync().filter { circolare ->
+            return@filter circolariFilter.isEmpty() || circolare.categories.split(",").any {
+                circolariFilter.contains(it.toLowerCase())
+            }
+        }.take(i)
+    }
+
 }

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Typeface.BOLD
 import android.os.Bundle
+import android.transition.Fade
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.MenuItem
@@ -22,6 +23,7 @@ import com.bortolan.iquadriv2.ui.asl.StageFragment
 import com.bortolan.iquadriv2.ui.calendario.CalendarioFragment
 import com.bortolan.iquadriv2.ui.classi.ClassiFragment
 import com.bortolan.iquadriv2.ui.notizie.NotizieFragment
+import com.bortolan.iquadriv2.ui.voti.VotiLogin
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,6 +40,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     StageFragment()
                 } else {
                     LoginFragment()
+                }
+            }
+            R.id.nav_voti -> {
+                fragment = if (PreferenceManager.isConnectedToSpaggiari(this)) {
+                    null
+                } else {
+                    VotiLogin()
                 }
             }
             R.id.nav_notizie -> {
@@ -57,7 +66,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(bottom_bar)
 
 
         bottom_bar.setNavigationOnClickListener {

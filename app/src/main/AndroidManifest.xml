@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bortolan.iquadriv2"
     android:installLocation="preferExternal">
 
@@ -12,8 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="252ed2b733dd81ce76fe61f583737b98a6b5eaf3" />
@@ -26,6 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.classi.ClasseDettagliActivity" />
+        <activity android:name=".ui.notizie.activity.CircolariActivity" />
+        <activity android:name=".ui.notizie.activity.QuadrinewsActivity"></activity>
     </application>
 
 </manifest>

@@ -88,7 +88,7 @@ class LoginFragment : Fragment() {
     }
 
     fun postLogin(success: Boolean) {
-        PreferenceManager.setConnectedToMasterstage(context, success)
+        PreferenceManager.setConnectedToMasterstage(context!!, success)
         viewModel.isSendingRequest.value = false
 
         if (success) {

@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     configurations {
         all*.exclude module: 'support-media-compat'
         all*.exclude module: 'support-compat'

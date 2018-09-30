@@ -126,7 +126,7 @@ object QuadriParser {
             val rows = html.select("item")
 
             rows.map {
-                Circolari(it.select("title").text(), it.select("description").text(), it.select("link").text(), circolareDateFormat.parse(it.select("pubDate").text()), Date())
+                Circolari(it.select("title").text(), it.select("description").text(), it.select("link").text(), circolareDateFormat.parse(it.select("pubDate").text()), Date(), it.select("category").text().replace(" ", ",").toLowerCase())
             }
         }
     }
